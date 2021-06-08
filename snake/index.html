@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/game.js"></script>
+    <script src="./js/snake.js"></script>
+    <script src="./js/food.js"></script>
+    <script src="./js/maps.js"></script>
+    <script src="./js/block.js"></script>
+    <style>
+        #score {
+            width: 100px;
+            height: 100px;
+            background-color: #f90;
+            color: #fff;
+            font-size: 18px;
+            text-align: center;
+            white-space: pre-wrap;
+            line-height: 35px;
+        }
+        
+        #box {
+            margin: 0 auto;
+            width: 700px;
+            height: 600px;
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="score"> 你的分数为 0
+        </div>
+        <div id="app"></div>
+    </div>
+
+    <script>
+        var app = document.getElementById('app');
+        // 地图
+        var map = new Maps(600, 600, 20, 20, app);
+        // 蛇
+        var snake = new Snake(
+            ['./img/1.png', './img/2.png', './img/3.png', './img/4.png'],
+            './img/5.png', ['./img/8.png', './img/9.png', './img/6.png', './img/7.png']
+        );
+        // 食物
+        var food = new Food(2, 6, './img/food.jpg');
+        // 障碍物
+        var block = new Block('./img/block.png');
+        // 游戏
+        var game = new Game(map, snake, food, block);
+        // 开始游戏
+        game.init();
+    </script>
+</body>
+
+</html>
